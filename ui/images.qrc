@@ -1,0 +1,15 @@
+<RCC>
+  <qresource prefix="imgs">
+    <file>folder-8.png</file>
+    <file>warning.png</file>
+    <file>repeat.png</file>
+    <file>smallhappyscampy.png</file>
+    <file>smallangryscampy.png</file>
+    <file>startup.png</file>
+    <file>scannermail.png</file>
+    <file>python.png</file>
+    <file>scanner.png</file>
+    <file>email.png</file>
+    <file>logo.png</file>
+  </qresource>
+</RCC>

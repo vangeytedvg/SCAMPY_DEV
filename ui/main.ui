@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>798</width>
+    <height>737</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>SCaMPy Scan And Mail with Python</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="tabShape">
+       <enum>QTabWidget::Rounded</enum>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <property name="tabBarAutoHide">
+       <bool>false</bool>
+      </property>
+      <widget class="QWidget" name="tab_Overview">
+       <attribute name="title">
+        <string>Gemaakte berichten</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QToolButton" name="tlbRefresh">
+          <property name="text">
+           <string>Vernieuwen</string>
+          </property>
+          <property name="icon">
+           <iconset resource="images.qrc">
+            <normaloff>:/imgs/repeat.png</normaloff>:/imgs/repeat.png</iconset>
+          </property>
+          <property name="toolButtonStyle">
+           <enum>Qt::ToolButtonTextUnderIcon</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSplitter" name="splitter">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <widget class="QTableWidget" name="table_SentItems">
+           <property name="editTriggers">
+            <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
+           <property name="tabKeyNavigation">
+            <bool>true</bool>
+           </property>
+           <property name="alternatingRowColors">
+            <bool>true</bool>
+           </property>
+           <property name="selectionBehavior">
+            <enum>QAbstractItemView::SelectRows</enum>
+           </property>
+           <property name="sortingEnabled">
+            <bool>true</bool>
+           </property>
+           <attribute name="horizontalHeaderStretchLastSection">
+            <bool>true</bool>
+           </attribute>
+          </widget>
+          <widget class="QListWidget" name="listPreview">
+           <property name="editTriggers">
+            <set>QAbstractItemView::CurrentChanged|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked</set>
+           </property>
+           <property name="flow">
+            <enum>QListView::LeftToRight</enum>
+           </property>
+           <property name="isWrapping" stdset="0">
+            <bool>true</bool>
+           </property>
+           <property name="resizeMode">
+            <enum>QListView::Adjust</enum>
+           </property>
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <property name="viewMode">
+            <enum>QListView::IconMode</enum>
+           </property>
+          </widget>
+          <widget class="QSlider" name="sliderPreviewSize">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_Create">
+       <attribute name="title">
+        <string>Nieuwe Email</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QFrame" name="msgFrameBox">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(148, 0, 0);</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::WinPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Plain</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QLabel" name="lblWarningNewMail">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="text">
+              <string>Opgepast, deze mail is reeds verzonden en kan niet meer worden aangepast. Maak een nieuwe email aan! </string>
+             </property>
+             <property name="margin">
+              <number>8</number>
+             </property>
+             <property name="indent">
+              <number>4</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="btnRestrictOverride">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/imgs/warning.png&quot;/&gt; Wijzigingen aanbrengen aan deze reeds verzonden email.&lt;/p&gt;&lt;p&gt;Opgepast, dit wordt in de logs opgeslagen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>...</string>
+             </property>
+             <property name="icon">
+              <iconset resource="images.qrc">
+               <normaloff>:/imgs/folder-8.png</normaloff>:/imgs/folder-8.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>24</width>
+               <height>24</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="5" column="1">
+           <widget class="QLabel" name="lblScanTarget">
+            <property name="text">
+             <string>...</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3" colspan="2">
+           <widget class="QLineEdit" name="txtProjectName"/>
+          </item>
+          <item row="1" column="0" colspan="3">
+           <widget class="QLabel" name="lblTo">
+            <property name="text">
+             <string>Bestemmeling(en):</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="2" colspan="3">
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>618</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="5" column="0">
+           <widget class="QPushButton" name="btnScanDoc">
+            <property name="text">
+             <string>Scan</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="3">
+           <widget class="QLabel" name="lblBody">
+            <property name="text">
+             <string>Boodschap:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="3" colspan="2">
+           <widget class="QLineEdit" name="txtSubject"/>
+          </item>
+          <item row="3" column="3" colspan="2">
+           <widget class="QPlainTextEdit" name="txtBody"/>
+          </item>
+          <item row="2" column="0" colspan="3">
+           <widget class="QLabel" name="lblSubject">
+            <property name="text">
+             <string>Onderwerp:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="3">
+           <widget class="QLabel" name="lblProjectName">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>Projectnaam:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="4">
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>518</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="3" colspan="2">
+           <widget class="QLineEdit" name="txtTo"/>
+          </item>
+          <item row="4" column="3">
+           <widget class="QPushButton" name="btnSaveEmail">
+            <property name="text">
+             <string>Bewaar</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QListWidget" name="listWidget">
+          <property name="isWrapping" stdset="0">
+           <bool>true</bool>
+          </property>
+          <property name="viewMode">
+           <enum>QListView::IconMode</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="horizontalSlider">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnSendEmail">
+          <property name="text">
+           <string>Verzend email</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>754</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_Test">
+       <attribute name="title">
+        <string>Scanner Details</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QPushButton" name="btn_TestScanner">
+          <property name="text">
+           <string>Test Scanner</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblScampy">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblScannerTest">
+          <property name="text">
+           <string>Nog geen test uitgevoerd, druk op Test Scanner...</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_Options">
+       <attribute name="title">
+        <string>Opties</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Uw email adres:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QPushButton" name="btn_SaveOptions">
+            <property name="text">
+             <string>Opslaan</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" colspan="2">
+           <widget class="QLineEdit" name="txt_ScanFilePrefix"/>
+          </item>
+          <item row="5" column="2">
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Naam zipfile:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Sla scans op in deze folder:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" colspan="2">
+           <widget class="QLineEdit" name="txt_Destination"/>
+          </item>
+          <item row="3" column="1" colspan="2">
+           <widget class="QLineEdit" name="txtOwnEmailAddress"/>
+          </item>
+          <item row="0" column="3">
+           <widget class="QToolButton" name="btnSelectFolder">
+            <property name="text">
+             <string>...</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>Prefix voor gescande bestanden:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" colspan="2">
+           <widget class="QLineEdit" name="txtDefaultZipName"/>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>GMail App-key:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1" colspan="2">
+           <widget class="QLineEdit" name="txtGmailAppKey"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>366</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>798</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_Bestand">
+    <property name="title">
+     <string>&amp;Bestand</string>
+    </property>
+    <addaction name="action_Afsluiten"/>
+   </widget>
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="action_Over"/>
+   </widget>
+   <addaction name="menu_Bestand"/>
+   <addaction name="menu_Help"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_Overview"/>
+   <addaction name="action_NewMail"/>
+   <addaction name="separator"/>
+   <addaction name="actionTest_Scanner"/>
+  </widget>
+  <action name="action_Afsluiten">
+   <property name="text">
+    <string>&amp;Afsluiten</string>
+   </property>
+  </action>
+  <action name="action_Over">
+   <property name="text">
+    <string>&amp;Over</string>
+   </property>
+  </action>
+  <action name="action_NewMail">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/imgs/scannermail.png</normaloff>:/imgs/scannermail.png</iconset>
+   </property>
+   <property name="text">
+    <string>Nieuwe Scan en Mail</string>
+   </property>
+   <property name="toolTip">
+    <string>Aanmaken nieuwe email</string>
+   </property>
+  </action>
+  <action name="action_Overview">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/imgs/python.png</normaloff>:/imgs/python.png</iconset>
+   </property>
+   <property name="text">
+    <string>Overzicht gemaakte mails</string>
+   </property>
+   <property name="toolTip">
+    <string>Overzicht verzonden items</string>
+   </property>
+  </action>
+  <action name="actionTest_Scanner">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/imgs/startup.png</normaloff>:/imgs/startup.png</iconset>
+   </property>
+   <property name="text">
+    <string>Test Scanner</string>
+   </property>
+   <property name="toolTip">
+    <string>Test of the scanner klaar is</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>txtProjectName</tabstop>
+  <tabstop>txtTo</tabstop>
+  <tabstop>txtSubject</tabstop>
+  <tabstop>txtBody</tabstop>
+  <tabstop>btnSaveEmail</tabstop>
+  <tabstop>btnScanDoc</tabstop>
+  <tabstop>listWidget</tabstop>
+  <tabstop>btnSendEmail</tabstop>
+  <tabstop>table_SentItems</tabstop>
+  <tabstop>btn_TestScanner</tabstop>
+  <tabstop>btnSelectFolder</tabstop>
+  <tabstop>btn_SaveOptions</tabstop>
+  <tabstop>txt_Destination</tabstop>
+  <tabstop>txt_ScanFilePrefix</tabstop>
+ </tabstops>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
+ <connections/>
+</ui>
