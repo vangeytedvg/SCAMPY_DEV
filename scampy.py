@@ -6,7 +6,7 @@
     Created : 17/12/2019 - 12:58
     History:  26/01/2020 - 11:47
               20/02/2020 - 13:25 Finishing touch on context menu for listview
-              24/03/2020 - 15:22 Integrating with GIT
+              24/03/2020 - 15:22 Integrating with GIT, GIT OK
 """
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
