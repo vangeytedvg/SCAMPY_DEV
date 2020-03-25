@@ -27,7 +27,6 @@ class GmailClient:
         self._body = body
         self._filename = files
         self._subject = subject
-        # Create keyring on instantiation
         print(self._filename)
 
     def sendGMail(self):

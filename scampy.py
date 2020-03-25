@@ -7,6 +7,7 @@
     History:  26/01/2020 - 11:47
               20/02/2020 - 13:25 Finishing touch on context menu for listview
               24/03/2020 - 15:22 Integrating with GIT, GIT OK
+              25/03/2020 - 10:43 Added override restrictions + confirm delete scan
 """
 import datetime
 import glob
