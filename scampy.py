@@ -8,24 +8,29 @@
               20/02/2020 - 13:25 Finishing touch on context menu for listview
               24/03/2020 - 15:22 Integrating with GIT, GIT OK
 """
+import datetime
+import glob
+import logging
+import time
+
+from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from main_form import Ui_MainWindow
-from scannermanager import ScannerManager
-from dvgtools.dvgFileUtills import isMailOk, nextImageFileName, extractFileNameOnly, makezip, Get_png_images, nukeFile
-from dvgtools.DanExceptions import MailSendError
-from MsgBox import MsgBox
-from Settings import SettingsManager
+from sqlalchemy import desc
+
 from database.db import Session
 from database.linkdb import *
-import datetime
-from preview import PreviewForm
-import time
-import glob
-from sqlalchemy import desc
+from dvgtools.DanExceptions import MailSendError
+from dvgtools.dvgFileUtills import (Get_png_images, extractFileNameOnly,
+                                    isMailOk, makezip, nextImageFileName,
+                                    nukeFile)
 from gmailmanager import GmailClient
-import logging
+from main_form import Ui_MainWindow
+from MsgBox import MsgBox
+from preview import PreviewForm
+from scannermanager import ScannerManager
+from Settings import SettingsManager
+
 # Global vars
 ERR_STYLE = "background-color: rgb(255, 0, 0); color: rgb(255, 255, 255);"
 COLUMN_COUNT = 7
@@ -35,9 +40,11 @@ SCAN_TARGET = "*.pdf"
 SCAN_SOURCE = "*.png"
 
 logging.Logger("dannyslog")
-logging.basicConfig(filename="scampy.log.txt", format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
+logging.basicConfig(filename="scampy.log.txt",
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
 
 
+# Main GUI class for SCAMPY
 class SCaMPy(QMainWindow, Ui_MainWindow):
     # Private values for last inserted record id's
     _lastIndexOfMail = 0
@@ -61,8 +68,6 @@ class SCaMPy(QMainWindow, Ui_MainWindow):
         # makedb()
         logging.info("Application startup")
         """ Some initial 'make-up' """
-        # self.setWindowState(Qt.WindowMaximized)
-        # Be sure to be on the main tab
         self.sliderPreviewSize.setValue(32)
         self.sliderPreviewSize.setMinimum(32)
         self.sliderPreviewSize.setMaximum(241)
@@ -105,19 +110,39 @@ class SCaMPy(QMainWindow, Ui_MainWindow):
         self.table_SentItems.selectionModel().selectionChanged.connect(self.table_row_changed)
         self.listPreview.setContextMenuPolicy(Qt.CustomContextMenu)
         self.listWidget.setContextMenuPolicy(Qt.CustomContextMenu)
-        self.listPreview.customContextMenuRequested.connect(self.showcontextmenu)
-        self.listWidget.customContextMenuRequested.connect(self.showcontextmenu)
+        self.listPreview.customContextMenuRequested.connect(
+            self.showcontextmenu)
+        self.listWidget.customContextMenuRequested.connect(
+            self.showcontextmenu)
         self.listPreview.itemClicked.connect(self.getCurrentScan)
         self.listWidget.itemClicked.connect(self.getCurrentScan)
         self.msgFrameBox.setVisible(False)
 
     def overrideRestriction(self):
-        if MsgBox.show(title="Hela!", icontype=QMessageBox.Warning, 
-                       text="Override Restrictions", subtext="Are you sure?", 
+        """
+            This allows a superuser to override the restrictions for re-editing and resending
+            a previously sent email.
+        """
+        if MsgBox.show(title="Hela!", icontype=QMessageBox.Warning,
+                       text="Override Restrictions", subtext="Are you sure?",
                        buttons=QMessageBox.Yes | QMessageBox.Cancel) == QMessageBox.Yes:
-            self.msgFrameBox.setStyleSheet("background-color: rgb(85, 170, 0);")
-            self.lblWarningNewMail.setText("You can change details now! Notice that SCaMPy has logged this event...")
-            logging.warning(f"User selected override on a sent email mail id = {self._lastIndexOfMail}")
+            self.msgFrameBox.setStyleSheet(
+                "background-color: rgb(85, 170, 0);")
+            self.lblWarningNewMail.setText(
+                "You can change details now! Notice that SCaMPy has logged this event...")
+            logging.warning(
+                f"User selected override on a sent email mail id = {self._lastIndexOfMail}")
+            self.btnSendEmail.setEnabled(True)
+            self.btnSaveEmail.setEnabled(True)
+            self.btnScanDoc.setEnabled(True)
+            # input boxes
+            self.txtTo.setEnabled(True)
+            self.txtSubject.setEnabled(True)
+            self.txtBody.setEnabled(True)
+            self.txtProjectName.setEnabled(True)
+        else:
+            logging.warning(
+                f"User tried to override restriction on a sent email (but aborted) mail id = {self._lastIndexOfMail}")
 
     def selectNothing(self):
         self.showMailOverview()
@@ -131,23 +156,26 @@ class SCaMPy(QMainWindow, Ui_MainWindow):
             Show the context menu for the selected item
             point is the location of the mouse when click occurred
         """
-        index=self.table_SentItems.indexAt(point)
+        index = self.table_SentItems.indexAt(point)
         if not index.isValid():
             return
         # if we get here, we are at a valid list item
-        item=self.listPreview.itemAt(point)
+        item = self.listPreview.itemAt(point)
         if not item:
             return
         # Construct the menu
-        self.my_menu=QMenu(self.listPreview)
+        self.my_menu = QMenu(self.listPreview)
         # Add options
-        delete_option=self.my_menu.addAction(f"Delete scan")
-        copy_option=self.my_menu.addAction(f"Kopieer pad naar bestand")
+        delete_option = self.my_menu.addAction(f"Delete scan")
+        copy_option = self.my_menu.addAction(f"Kopieer pad naar bestand")
         # Execute and wait for menu item selection
-        user_action=self.my_menu.exec_(self.listPreview.mapToGlobal(point))
+        user_action = self.my_menu.exec_(self.listPreview.mapToGlobal(point))
         # See what user clicked on
         if user_action == delete_option:
-            self.delete_scanned_document(item.text())
+            if MsgBox.show("Opgelet", icontype=QMessageBox.Question,
+                           text="Deze scan verwijderen?", subtext="Dit kan niet ongedaan gemaakt worden!",
+                           buttons=QMessageBox.Yes | QMessageBox.Cancel) == QMessageBox.Yes:
+                self.delete_scanned_document(item.text())
         elif user_action == copy_option:
             print("Copy path")
 
@@ -155,22 +183,28 @@ class SCaMPy(QMainWindow, Ui_MainWindow):
         """
         Remove a scanned document from the listview
         """
-        if MsgBox.show(title = "Vraag", text = "Deze scan verwijderen?", icontype = QMessageBox.Question, subtext = "Dit kan niet ongedaan gemaakt worden", buttons = QMessageBox.Yes | QMessageBox.No) == QMessageBox.No:
+        if MsgBox.show(title="Vraag", text="Deze scan verwijderen?", icontype=QMessageBox.Question,
+                       subtext="Dit kan niet ongedaan gemaakt worden!", 
+                       buttons=QMessageBox.Yes | QMessageBox.No) == QMessageBox.No:
             return
 
-        file_to_delete=self._scan_base_folder + os.sep + str(self._lastIndexOfMail) + os.sep + itemname
+        file_to_delete = self._scan_base_folder + os.sep + \
+            str(self._lastIndexOfMail) + os.sep + itemname
         try:
             os.remove(file_to_delete)
             self._populate2(self.listPreview, self._lastIndexOfMail)
             self._populate2(self.listWidget, self._lastIndexOfMail)
             logging.warning(f"File {file_to_delete} was deleted by the user!")
         except Exception as e:
-            logging.warning(f"File {file_to_delete} could not be deleted by the user!")
-            MsgBox.show("Probleem!", QMessageBox.Critical, "Fout", "Bestand kan niet worden gewist", QMessageBox.Ok)
+            logging.warning(
+                f"File {file_to_delete} could not be deleted by the user!")
+            MsgBox.show("Probleem!", QMessageBox.Critical, "Fout",
+                        "Bestand kan niet worden gewist", QMessageBox.Ok)
 
     def table_row_changed(self, *args):
         """ Get info from the cell with the id """
-        id=self.table_SentItems.item(self.table_SentItems.currentIndex().row(), 0).text()
+        id = self.table_SentItems.item(
+            self.table_SentItems.currentIndex().row(), 0).text()
         # Now get the scans if any and show them
         self._populate2(self.listPreview, id)
         self._populate2(self.listWidget, id)
@@ -183,10 +217,11 @@ class SCaMPy(QMainWindow, Ui_MainWindow):
         :param messageid: id of selected message
         :return: Nothing
         """
-        self._lastIndexOfMail=messageid
-        session=Session()
-        mails=session.query(MailBox).filter(MailBox.id == messageid).first()
-        proj=session.query(Projects).filter(Projects.parent_mail_id == messageid).first()
+        self._lastIndexOfMail = messageid
+        session = Session()
+        mails = session.query(MailBox).filter(MailBox.id == messageid).first()
+        proj = session.query(Projects).filter(
+            Projects.parent_mail_id == messageid).first()
         # fill the textfields with the contents of the mail,
         # also activate the 'scan' and 'send' buttons in this case
         self.txtTo.setText(mails.mail_to)
@@ -229,7 +264,7 @@ class SCaMPy(QMainWindow, Ui_MainWindow):
         :return:
         """
         # Number of columns
-        session=Session()
+        session = Session()
         self.table_SentItems.setColumnCount(COLUMN_COUNT)
         self.table_SentItems.clear()
 
@@ -245,7 +280,7 @@ class SCaMPy(QMainWindow, Ui_MainWindow):
                 FROM mailbox JOIN projects ON mailbox.id = projects.parent_mail_id
                 ORDER BY mailbox_id desc
         """
-        mails=session.query(MailBox, Projects).join(Projects,
+        mails = session.query(MailBox, Projects).join(Projects,
                                                       MailBox.id == Projects.parent_mail_id).order_by(desc(MailBox.id))
 
         # Set the headers
@@ -253,7 +288,7 @@ class SCaMPy(QMainWindow, Ui_MainWindow):
                                                         "Datum Verzonden", "Naar",
                                                         "Onderwerp", "Project id", "Project naam"))
         # Create rows, use double ( for tuple
-        rows=[]
+        rows = []
         for mail in mails:
             # Notice the indexes of the table
             rows.append((str(mail[MAILBOX].id),
@@ -268,7 +303,7 @@ class SCaMPy(QMainWindow, Ui_MainWindow):
         self.table_SentItems.setRowCount(len(rows))
         for row, cols in enumerate(rows):
             for col, text in enumerate(cols):
-                table_item=QTableWidgetItem(text)
+                table_item = QTableWidgetItem(text)
                 # Optional, but very useful.
                 table_item.setData(Qt.UserRole + 1, "user")
                 self.table_SentItems.setItem(row, col, table_item)
@@ -286,11 +321,12 @@ class SCaMPy(QMainWindow, Ui_MainWindow):
         """
         # Zip the files
         # result = makezip(self._scan_base_folder, self._defaultZipFileName, self._lastIndexOfMail)
-        result=Get_png_images(self._scan_base_folder + os.sep + str(self._lastIndexOfMail))
+        result = Get_png_images(
+            self._scan_base_folder + os.sep + str(self._lastIndexOfMail))
         print(result)
-        mg=GmailClient(receiver = self.txtTo.text(), body = self.txtBody.toPlainText(),
+        mg = GmailClient(receiver=self.txtTo.text(), body=self.txtBody.toPlainText(),
                          subject=self.txtSubject.text(), files=result, gmail_key=self._gmailappkey)
-        
+
         try:
             mg.sendGMail()
             session = Session()
@@ -298,9 +334,11 @@ class SCaMPy(QMainWindow, Ui_MainWindow):
             # Set sent date and time
             x.date_sent = datetime.datetime.now()
             session.commit()
-            logging.info(f"Mail sent and updated record {self._lastIndexOfMail}")       
+            logging.info(
+                f"Mail sent and updated record {self._lastIndexOfMail}")
         except MailSendError as err:
-            MsgBox.show("Probleem!", QMessageBox.Critical, "Fout", "Email niet verzonden!", QMessageBox.Ok)
+            MsgBox.show("Probleem!", QMessageBox.Critical, "Fout",
+                        "Email niet verzonden!", QMessageBox.Ok)
             logging.error(f"Unable to send mail {err.msg} {err.destination}")
 
     """ The following two methods work on different list widgets """
@@ -370,7 +408,8 @@ class SCaMPy(QMainWindow, Ui_MainWindow):
             self.lblTo.setStyleSheet("")
         else:
             self.lblTo.setStyleSheet(ERR_STYLE)
-            incorrectFields.append("Bestemmeling, kijk of email adres correct is!")
+            incorrectFields.append(
+                "Bestemmeling, kijk of email adres correct is!")
 
         if len(self.txtSubject.text()) == 0:
             self.lblSubject.setStyleSheet(ERR_STYLE)
@@ -411,7 +450,8 @@ class SCaMPy(QMainWindow, Ui_MainWindow):
                 print("Message created")
                 session.commit()
                 self._lastIndexOfMail = mailbox_item.id
-                project_item = Projects(mailbox_item.id, self.txtProjectName.text())
+                project_item = Projects(
+                    mailbox_item.id, self.txtProjectName.text())
                 session.add(project_item)
                 session.commit()
                 # Remember last project item id
@@ -419,7 +459,8 @@ class SCaMPy(QMainWindow, Ui_MainWindow):
                 logging.info(f"Created record {mailbox_item.id}")
                 # Now create the target folder for the scans related to this email
                 # Note, the folders will reside under the selected target folder in the settings.
-                path = self._scan_base_folder + os.sep + str(self._lastIndexOfMail)
+                path = self._scan_base_folder + \
+                    os.sep + str(self._lastIndexOfMail)
                 self.lblScanTarget.setText(path)
                 logging.warning(f"Creating folder {path}")
                 try:
@@ -606,13 +647,15 @@ class SCaMPy(QMainWindow, Ui_MainWindow):
             self.move(this_settings_getter["position"])
             self.resize(this_settings_getter["size"])
             self.txt_Destination.setText(this_settings_getter["scanfilepath"])
-            self.txt_ScanFilePrefix.setText(this_settings_getter["scanfileprefix"])
+            self.txt_ScanFilePrefix.setText(
+                this_settings_getter["scanfileprefix"])
             self._scan_base_folder = this_settings_getter["scanfilepath"]
             self.lblScanTarget.setText(self._scan_base_folder)
             self._file_prefix = this_settings_getter["scanfileprefix"]
             self.txtDefaultZipName.setText(this_settings_getter["defaultzip"])
             self._defaultZipFileName = this_settings_getter["defaultzip"]
-            self.txtOwnEmailAddress.setText(this_settings_getter["sendermailaddress"])
+            self.txtOwnEmailAddress.setText(
+                this_settings_getter["sendermailaddress"])
             self._ownEmailAddress = this_settings_getter["sendermailaddress"]
             self._gmailappkey = this_settings_getter["gmailappkey"]
             self.txtGmailAppKey.setText(self._gmailappkey)
@@ -646,4 +689,3 @@ if __name__ == '__main__':
     main_form.show()
     splash.finish(main_form)
     sys.exit(app.exec_())
-

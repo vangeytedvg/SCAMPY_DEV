@@ -41,7 +41,7 @@ class GmailClient:
         content = [self._body, 'File attached']
         # EAFP
         try:
-            yag.send(self._receiver, self._subject, contents=content, attachments=self._filename)
+            yag.send(self._receiver, self._subject,
+                     contents=content, attachments=self._filename)
         except Exception:
             raise MailSendError("Mail can't be sent (to is):", self._receiver)
-
