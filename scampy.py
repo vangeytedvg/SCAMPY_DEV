@@ -495,7 +495,6 @@ class SCaMPy(QMainWindow, Ui_MainWindow):
             return False
 
     def deleteScannedImage(self):
-        # TODO : Continue here
         # Need to get the row nr of the icon, then we are
         # able to delete it
         p = QModelIndex(self.listWidget.currentIndex())

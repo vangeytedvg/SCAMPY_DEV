@@ -435,3 +435,189 @@ INFO:root:Scampy started
 2020-03-24 14:26:31,664 - root - INFO - Application startup
 2020-03-24 14:26:45,174 - root - INFO - Application shutting down
 2020-03-24 14:26:45,174 - root - INFO - Saving settings
+2020-03-25 12:06:07,994 - root - INFO - Application startup
+2020-03-25 12:06:44,293 - root - INFO - Application shutting down
+2020-03-25 12:06:44,293 - root - INFO - Saving settings
+2020-04-06 16:47:30,923 - root - INFO - Application startup
+2020-04-06 16:48:11,509 - root - ERROR - Problem with input
+2020-04-06 16:48:25,162 - root - INFO - Created record 22
+2020-04-06 16:48:25,162 - root - WARNING - Creating folder /home/danny/scanned_docs/22
+2020-04-06 16:48:46,747 - root - INFO - Test scanner started
+2020-04-06 16:48:46,751 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-06 16:48:46,753 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_gf4b9rik/pipe_c2s | /tmp/pyinsane_gf4b9rik/pipe_s2c
+2020-04-06 16:48:48,377 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-06 16:48:57,350 - root - ERROR - Scanner not online, or wrong WIFI hotspot
+2020-04-06 16:49:03,814 - root - INFO - Test scanner started
+2020-04-06 16:49:03,817 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-06 16:49:03,818 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_46yvrt0v/pipe_c2s | /tmp/pyinsane_46yvrt0v/pipe_s2c
+2020-04-06 16:49:05,161 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-06 16:49:13,130 - root - ERROR - Scanner not online, or wrong WIFI hotspot
+2020-04-06 16:49:14,776 - root - INFO - Test scanner started
+2020-04-06 16:49:14,781 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-06 16:49:14,782 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_v2p2lm0p/pipe_c2s | /tmp/pyinsane_v2p2lm0p/pipe_s2c
+2020-04-06 16:49:16,135 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-06 16:49:24,543 - root - ERROR - Scanner not online, or wrong WIFI hotspot
+2020-04-06 16:49:26,736 - root - INFO - Test scanner started
+2020-04-06 16:49:26,739 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-06 16:49:26,740 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_q963b9im/pipe_c2s | /tmp/pyinsane_q963b9im/pipe_s2c
+2020-04-06 16:49:28,105 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-06 16:49:36,104 - root - INFO - Scanner ready
+2020-04-06 16:49:39,987 - root - INFO - Starting scan of document
+2020-04-06 16:49:39,990 - root - INFO - Next new document : /home/danny/scanned_docs/22/scan_20200406_001.png
+2020-04-06 16:49:39,990 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-06 16:49:39,991 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_9cfqk9qk/pipe_c2s | /tmp/pyinsane_9cfqk9qk/pipe_s2c
+2020-04-06 16:49:41,335 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-06 16:49:49,493 - pyinsane2 - INFO - [resolution] set to [75]
+2020-04-06 16:49:49,499 - pyinsane2 - INFO - [mode] set to [Color]
+2020-04-06 16:49:57,128 - root - INFO - 1
+2020-04-06 16:50:15,122 - root - INFO - Starting scan of document
+2020-04-06 16:50:15,123 - root - INFO - Next new document : /home/danny/scanned_docs/22/scan_20200406_002.png
+2020-04-06 16:50:15,124 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-06 16:50:15,124 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_0d2k4xm6/pipe_c2s | /tmp/pyinsane_0d2k4xm6/pipe_s2c
+2020-04-06 16:50:16,477 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-06 16:50:24,697 - pyinsane2 - INFO - [resolution] set to [75]
+2020-04-06 16:50:24,705 - pyinsane2 - INFO - [mode] set to [Color]
+2020-04-06 16:50:31,937 - root - INFO - 1
+2020-04-06 16:50:57,182 - root - INFO - Starting scan of document
+2020-04-06 16:50:57,183 - root - INFO - Next new document : /home/danny/scanned_docs/22/scan_20200406_003.png
+2020-04-06 16:50:57,183 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-06 16:50:57,184 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_twhpk37i/pipe_c2s | /tmp/pyinsane_twhpk37i/pipe_s2c
+2020-04-06 16:50:58,517 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-06 16:51:06,929 - pyinsane2 - INFO - [resolution] set to [75]
+2020-04-06 16:51:06,935 - pyinsane2 - INFO - [mode] set to [Color]
+2020-04-06 16:51:17,584 - root - INFO - 1
+2020-04-06 16:51:37,139 - root - INFO - Starting scan of document
+2020-04-06 16:51:37,145 - root - INFO - Next new document : /home/danny/scanned_docs/22/scan_20200406_004.png
+2020-04-06 16:51:37,145 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-06 16:51:37,145 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_wk3dew1b/pipe_c2s | /tmp/pyinsane_wk3dew1b/pipe_s2c
+2020-04-06 16:51:38,471 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-06 16:51:46,879 - pyinsane2 - INFO - [resolution] set to [75]
+2020-04-06 16:51:46,885 - pyinsane2 - INFO - [mode] set to [Color]
+2020-04-06 16:51:54,880 - root - INFO - 1
+2020-04-06 16:52:18,449 - root - INFO - Starting scan of document
+2020-04-06 16:52:18,450 - root - INFO - Next new document : /home/danny/scanned_docs/22/scan_20200406_005.png
+2020-04-06 16:52:18,452 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-06 16:52:18,453 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_ogvo0qrt/pipe_c2s | /tmp/pyinsane_ogvo0qrt/pipe_s2c
+2020-04-06 16:52:19,790 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-06 16:52:27,896 - pyinsane2 - INFO - [resolution] set to [75]
+2020-04-06 16:52:27,901 - pyinsane2 - INFO - [mode] set to [Color]
+2020-04-06 16:52:35,348 - root - INFO - 1
+2020-04-06 16:52:53,546 - root - INFO - Starting scan of document
+2020-04-06 16:52:53,547 - root - INFO - Next new document : /home/danny/scanned_docs/22/scan_20200406_006.png
+2020-04-06 16:52:53,547 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-06 16:52:53,549 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_k8ttcfq0/pipe_c2s | /tmp/pyinsane_k8ttcfq0/pipe_s2c
+2020-04-06 16:52:54,887 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-06 16:53:03,305 - pyinsane2 - INFO - [resolution] set to [75]
+2020-04-06 16:53:03,313 - pyinsane2 - INFO - [mode] set to [Color]
+2020-04-06 16:53:10,725 - root - INFO - 1
+2020-04-06 16:53:24,118 - root - INFO - Starting scan of document
+2020-04-06 16:53:24,120 - root - INFO - Next new document : /home/danny/scanned_docs/22/scan_20200406_007.png
+2020-04-06 16:53:24,121 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-06 16:53:24,122 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_f5qjfe0i/pipe_c2s | /tmp/pyinsane_f5qjfe0i/pipe_s2c
+2020-04-06 16:53:25,476 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-06 16:53:33,878 - pyinsane2 - INFO - [resolution] set to [75]
+2020-04-06 16:53:33,884 - pyinsane2 - INFO - [mode] set to [Color]
+2020-04-06 16:53:41,341 - root - INFO - 1
+2020-04-06 16:54:03,956 - root - INFO - Mail sent and updated record 22
+2020-04-06 16:54:30,114 - root - INFO - Application shutting down
+2020-04-06 16:54:30,115 - root - INFO - Saving settings
+2020-04-11 13:43:03,943 - root - INFO - Application startup
+2020-04-11 13:43:47,142 - root - INFO - Created record 23
+2020-04-11 13:43:47,143 - root - WARNING - Creating folder /home/danny/scanned_docs/23
+2020-04-11 13:44:18,459 - root - INFO - Starting scan of document
+2020-04-11 13:44:18,460 - root - INFO - Next new document : /home/danny/scanned_docs/23/scan_20200411_001.png
+2020-04-11 13:44:18,461 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-11 13:44:18,465 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_496t9xo9/pipe_c2s | /tmp/pyinsane_496t9xo9/pipe_s2c
+2020-04-11 13:44:19,920 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-11 13:44:29,209 - pyinsane2 - INFO - [resolution] set to [75]
+2020-04-11 13:44:29,217 - pyinsane2 - INFO - [mode] set to [Color]
+2020-04-11 13:44:43,433 - root - INFO - 1
+2020-04-11 13:44:57,806 - root - INFO - Starting scan of document
+2020-04-11 13:44:57,807 - root - INFO - Next new document : /home/danny/scanned_docs/23/scan_20200411_002.png
+2020-04-11 13:44:57,807 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-11 13:44:57,808 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_t1ogsqx8/pipe_c2s | /tmp/pyinsane_t1ogsqx8/pipe_s2c
+2020-04-11 13:44:59,174 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-11 13:45:07,201 - pyinsane2 - INFO - [resolution] set to [75]
+2020-04-11 13:45:07,207 - pyinsane2 - INFO - [mode] set to [Color]
+2020-04-11 13:45:15,656 - root - INFO - 1
+2020-04-11 13:45:31,760 - root - INFO - Starting scan of document
+2020-04-11 13:45:31,768 - root - INFO - Next new document : /home/danny/scanned_docs/23/scan_20200411_003.png
+2020-04-11 13:45:31,769 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-11 13:45:31,769 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_uuape7_9/pipe_c2s | /tmp/pyinsane_uuape7_9/pipe_s2c
+2020-04-11 13:45:33,354 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-11 13:45:41,395 - pyinsane2 - INFO - [resolution] set to [75]
+2020-04-11 13:45:41,403 - pyinsane2 - INFO - [mode] set to [Color]
+2020-04-11 13:45:50,170 - root - INFO - 1
+2020-04-11 13:46:07,841 - root - INFO - Starting scan of document
+2020-04-11 13:46:07,842 - root - INFO - Next new document : /home/danny/scanned_docs/23/scan_20200411_004.png
+2020-04-11 13:46:07,842 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-11 13:46:07,843 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_dz5c2_0i/pipe_c2s | /tmp/pyinsane_dz5c2_0i/pipe_s2c
+2020-04-11 13:46:09,212 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-11 13:46:17,255 - pyinsane2 - INFO - [resolution] set to [75]
+2020-04-11 13:46:17,262 - pyinsane2 - INFO - [mode] set to [Color]
+2020-04-11 13:46:25,415 - root - INFO - 1
+2020-04-11 13:46:42,150 - root - INFO - Starting scan of document
+2020-04-11 13:46:42,151 - root - INFO - Next new document : /home/danny/scanned_docs/23/scan_20200411_005.png
+2020-04-11 13:46:42,152 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-11 13:46:42,153 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_h_475p9e/pipe_c2s | /tmp/pyinsane_h_475p9e/pipe_s2c
+2020-04-11 13:46:43,512 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-11 13:46:53,163 - root - ERROR - Scanner not connecting
+2020-04-11 13:46:54,416 - root - INFO - Starting scan of document
+2020-04-11 13:46:54,417 - root - INFO - Next new document : /home/danny/scanned_docs/23/scan_20200411_005.png
+2020-04-11 13:46:54,417 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-11 13:46:54,418 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_hsekwaxb/pipe_c2s | /tmp/pyinsane_hsekwaxb/pipe_s2c
+2020-04-11 13:46:55,845 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-11 13:47:04,206 - pyinsane2 - INFO - [resolution] set to [75]
+2020-04-11 13:47:04,211 - pyinsane2 - INFO - [mode] set to [Color]
+2020-04-11 13:47:11,782 - root - INFO - 1
+2020-04-11 13:47:30,521 - root - INFO - Starting scan of document
+2020-04-11 13:47:30,522 - root - INFO - Next new document : /home/danny/scanned_docs/23/scan_20200411_006.png
+2020-04-11 13:47:30,523 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-11 13:47:30,523 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_x84638qx/pipe_c2s | /tmp/pyinsane_x84638qx/pipe_s2c
+2020-04-11 13:47:31,902 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-11 13:47:40,289 - pyinsane2 - INFO - [resolution] set to [75]
+2020-04-11 13:47:40,295 - pyinsane2 - INFO - [mode] set to [Color]
+2020-04-11 13:48:02,283 - root - INFO - 1
+2020-04-11 13:48:08,891 - root - INFO - Starting scan of document
+2020-04-11 13:48:08,892 - root - INFO - Next new document : /home/danny/scanned_docs/23/scan_20200411_007.png
+2020-04-11 13:48:08,893 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-11 13:48:08,894 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_cjc99khs/pipe_c2s | /tmp/pyinsane_cjc99khs/pipe_s2c
+2020-04-11 13:48:10,212 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-11 13:48:18,288 - pyinsane2 - INFO - [resolution] set to [75]
+2020-04-11 13:48:18,294 - pyinsane2 - INFO - [mode] set to [Color]
+2020-04-11 13:48:26,738 - root - INFO - 1
+2020-04-11 13:48:44,823 - root - INFO - Starting scan of document
+2020-04-11 13:48:44,825 - root - INFO - Next new document : /home/danny/scanned_docs/23/scan_20200411_008.png
+2020-04-11 13:48:44,825 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-11 13:48:44,826 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane__63tzhp7/pipe_c2s | /tmp/pyinsane__63tzhp7/pipe_s2c
+2020-04-11 13:48:46,186 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-11 13:48:54,866 - pyinsane2 - INFO - [resolution] set to [75]
+2020-04-11 13:48:54,872 - pyinsane2 - INFO - [mode] set to [Color]
+2020-04-11 13:49:03,368 - root - INFO - 1
+2020-04-11 13:49:20,957 - root - INFO - Starting scan of document
+2020-04-11 13:49:20,958 - root - INFO - Next new document : /home/danny/scanned_docs/23/scan_20200411_009.png
+2020-04-11 13:49:20,959 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-11 13:49:20,960 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_du110_6z/pipe_c2s | /tmp/pyinsane_du110_6z/pipe_s2c
+2020-04-11 13:49:22,318 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-11 13:49:30,258 - pyinsane2 - INFO - [resolution] set to [75]
+2020-04-11 13:49:30,264 - pyinsane2 - INFO - [mode] set to [Color]
+2020-04-11 13:49:38,037 - root - INFO - 1
+2020-04-11 13:49:55,533 - root - INFO - Starting scan of document
+2020-04-11 13:49:55,534 - root - INFO - Next new document : /home/danny/scanned_docs/23/scan_20200411_010.png
+2020-04-11 13:49:55,535 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-11 13:49:55,536 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_gu1xuceb/pipe_c2s | /tmp/pyinsane_gu1xuceb/pipe_s2c
+2020-04-11 13:49:56,885 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-11 13:50:04,966 - pyinsane2 - INFO - [resolution] set to [75]
+2020-04-11 13:50:04,975 - pyinsane2 - INFO - [mode] set to [Color]
+2020-04-11 13:50:12,732 - root - INFO - 1
+2020-04-11 13:50:31,587 - root - INFO - Starting scan of document
+2020-04-11 13:50:31,587 - root - INFO - Next new document : /home/danny/scanned_docs/23/scan_20200411_011.png
+2020-04-11 13:50:31,588 - pyinsane2.sane.abstract_proc - INFO - Starting Pyinsane subprocess
+2020-04-11 13:50:31,589 - pyinsane2.sane.abstract_proc - INFO - Pyinsane pipes: /tmp/pyinsane_2g_9loqy/pipe_c2s | /tmp/pyinsane_2g_9loqy/pipe_s2c
+2020-04-11 13:50:33,065 - pyinsane2.sane.abstract_proc - INFO - Connected to Pyinsane subprocess
+2020-04-11 13:50:41,192 - pyinsane2 - INFO - [resolution] set to [75]
+2020-04-11 13:50:41,198 - pyinsane2 - INFO - [mode] set to [Color]
+2020-04-11 13:50:49,728 - root - INFO - 1
+2020-04-11 13:51:09,971 - root - INFO - Mail sent and updated record 23
+2020-04-11 13:51:15,746 - root - INFO - Application shutting down
+2020-04-11 13:51:15,747 - root - INFO - Saving settings
